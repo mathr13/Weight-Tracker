@@ -46,159 +46,158 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(200),
-        child: Stack(
-          children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25),
-                  bottomRight: Radius.circular(25)
+        child: SafeArea(
+          child: Stack(
+            children: <Widget>[
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(25),
+                    bottomRight: Radius.circular(25)
+                  ),
                 ),
-              ),
-              height: 200,
-              alignment: Alignment.bottomLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Text(
-                              RECORDS,
-                              style: genericTextDecoration(
-                                fontSize: 40,
-                                colour: parseColor(TEXTCOLOUR)
-                              )
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 8, left: 10),
-                              child: Container(
-                                height: 28,
-                                width: 34,
-                                decoration: BoxDecoration(
-                                  color: parseColor(PRIMARYCOLOUR),
-                                  borderRadius: BorderRadius.all(Radius.circular(25)),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    listOfObjects.length > 99
-                                      ? "99+"
-                                      : listOfObjects.length.toString(),
-                                    style: genericTextDecoration(colour: Colors.white, fontSize: 14),
+                height: 200,
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                RECORDS,
+                                style: genericTextDecoration(
+                                  fontSize: 40,
+                                  colour: parseColor(TEXTCOLOUR)
+                                )
+                              ),
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8, left: 10),
+                                child: Container(
+                                  height: 28,
+                                  width: 34,
+                                  decoration: BoxDecoration(
+                                    color: parseColor(PRIMARYCOLOUR),
+                                    borderRadius: BorderRadius.all(Radius.circular(25)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      listOfObjects.length > 99
+                                        ? "99+"
+                                        : listOfObjects.length.toString(),
+                                      style: genericTextDecoration(colour: Colors.white, fontSize: 14),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        InkWell(
-                          onTap: () {
-                            showGeneralDialog(
-                              barrierDismissible: true,
-                              barrierLabel: "",
-                              barrierColor: Colors.black38,
-                              transitionDuration: Duration(milliseconds: 200),
-                              pageBuilder: (ctx, anim1, anim2) => getPopUpScreenForEntry(),
-                              transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
-                                filter: ImageFilter.blur(
-                                  sigmaX: 4 * anim1.value,
-                                  sigmaY: 4 * anim1.value
+                            ],
+                          )
+                        ],
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          InkWell(
+                            onTap: () {
+                              showGeneralDialog(
+                                barrierDismissible: true,
+                                barrierLabel: "",
+                                barrierColor: Colors.black38,
+                                transitionDuration: Duration(milliseconds: 200),
+                                pageBuilder: (ctx, anim1, anim2) => getPopUpScreenForEntry(),
+                                transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 4 * anim1.value,
+                                    sigmaY: 4 * anim1.value
+                                  ),
+                                  child: FadeTransition(
+                                    child: child,
+                                    opacity: anim1,
+                                  ),
                                 ),
-                                child: FadeTransition(
-                                  child: child,
-                                  opacity: anim1,
-                                ),
+                                context: context,
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 5),
+                              child: Icon(
+                                Icons.add,
+                                size: 35,
+                                color: parseColor(PRIMARYCOLOUR),
                               ),
-                              context: context,
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 5),
-                            child: Icon(
-                              Icons.add,
-                              size: 35,
-                              color: parseColor(PRIMARYCOLOUR),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                  child: CircularProfileAvatar(
-                    "",
-                    backgroundColor: parseColor(BORDERCOLOUR),
-                    borderColor: Colors.white,
-                    borderWidth: 0.75,
-                    initialsText: Text(
-                      main.userFirstName.toUpperCase().substring(0, 1) + main.userLastName.toUpperCase().substring(0, 1),
-                      style: genericTextDecoration(fontSize: 16, colour: Colors.white),
-                    ),
-                    radius: 20,
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30.0),
-                  child: SvgPicture.asset(
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                    child: CircularProfileAvatar(
+                      "",
+                      backgroundColor: parseColor(BORDERCOLOUR),
+                      borderColor: Colors.white,
+                      borderWidth: 0.75,
+                      initialsText: Text(
+                        main.userFirstName.toUpperCase().substring(0, 1) + main.userLastName.toUpperCase().substring(0, 1),
+                        style: genericTextDecoration(fontSize: 16, colour: Colors.white),
+                      ),
+                      radius: 20,
+                    ),
+                  ),
+                  SvgPicture.asset(
                     "Assets/Images/insidelogo.svg",
                     height: 90,
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    showGeneralDialog(
-                      barrierDismissible: false,
-                      barrierLabel: "",
-                      barrierColor: Colors.black38,
-                      transitionDuration: Duration(milliseconds: 500),
-                      pageBuilder: (ctx, anim1, anim2) => getPopUpScreenForProfile(),
-                      transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
-                        child: FadeTransition(
-                          child: child,
-                          opacity: anim1,
+                  GestureDetector(
+                    onTap: () {
+                      showGeneralDialog(
+                        barrierDismissible: false,
+                        barrierLabel: "",
+                        barrierColor: Colors.black38,
+                        transitionDuration: Duration(milliseconds: 500),
+                        pageBuilder: (ctx, anim1, anim2) => getPopUpScreenForProfile(),
+                        transitionBuilder: (ctx, anim1, anim2, child) => BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 4 * anim1.value, sigmaY: 4 * anim1.value),
+                          child: FadeTransition(
+                            child: child,
+                            opacity: anim1,
+                          ),
                         ),
-                      ),
-                      context: context,
-                    );
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
-                    child: Opacity(
-                      opacity: 0.70,
-                      child: Image.asset(
-                        "Assets/Images/exit.png",
-                        color: Colors.white,
-                        height: 25,
+                        context: context,
+                      );
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                      child: Opacity(
+                        opacity: 0.70,
+                        child: Image.asset(
+                          "Assets/Images/exit.png",
+                          color: Colors.white,
+                          height: 25,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       backgroundColor: parseColor(FILLCOLOUR),

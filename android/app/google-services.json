@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "716032272229",
+    "firebase_url": "https://weights-c09a4.firebaseio.com",
+    "project_id": "weights-c09a4",
+    "storage_bucket": "weights-c09a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716032272229:android:33b737953b28fe17d0238c",
+        "android_client_info": {
+          "package_name": "com.example.poc_stack_finance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716032272229-e5bit91m5sbcfpvt3i6ssnpo0g03jk0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRIejCUweRlmqm7PRYHDApGflzzZWoSlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716032272229-e5bit91m5sbcfpvt3i6ssnpo0g03jk0h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "716032272229-8drfujrcmt1aqtrh4ab97gj4apdit8dv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.poc.pocStackFinance"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
