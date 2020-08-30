@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               children: <Widget>[
                 SvgPicture.asset("Assets/Images/insidelogo.svg"),
                 SizedBox(
-                  height: 20,
+                  height: 25,
                 ),
                 Text(
                   APPNAME,
