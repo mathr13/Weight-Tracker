@@ -161,9 +161,12 @@ class _DashboardState extends State<Dashboard> {
                       radius: 20,
                     ),
                   ),
-                  SvgPicture.asset(
-                    "Assets/Images/insidelogo.svg",
-                    height: 90,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: SvgPicture.asset(
+                      "Assets/Images/insidelogo.svg",
+                      height: 90,
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
