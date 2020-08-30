@@ -36,6 +36,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     listOfObjects.clear();
+    isDataFetched = false;
     if (widget.isNewUser == null)
       widget.isNewUser = false;
     fetchDataFromFirebase(main.database, widget.user);
@@ -205,7 +206,15 @@ class _DashboardState extends State<Dashboard> {
         onWillPop: () async {
           return true;
         },
-        child: listOfObjects.length == 0
+        child: !isDataFetched
+        ? Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(
+              parseColor(TEXTCOLOUR)
+            ),
+          ),
+        )
+        : listOfObjects.length == 0
           ? Center(
               child: Opacity(
                 opacity: 0.75,
@@ -368,7 +377,9 @@ class _DashboardState extends State<Dashboard> {
     database.reference().child(user.uid + "/" + weight.uniqueId + "/").update({
       "weight": double.parse(_weightController.text),
       "timestamp": weight.timestamp,
-      "change": double.parse(_weightController.text) - listOfObjects[index + 1].value
+      "change": index == listOfObjects.length - 1
+      ? 0.01
+      : double.parse(_weightController.text) - listOfObjects[index + 1].value
     }).then((_) {
       if (index > 0) {
         Weight impactedWeight = listOfObjects[index - 1];
@@ -569,7 +580,7 @@ class _DashboardState extends State<Dashboard> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20, right: 10),
                 child: Opacity(
                   opacity: 0.75,
                   child: Text(
