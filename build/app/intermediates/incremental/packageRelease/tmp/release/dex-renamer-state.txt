@@ -1,4 +1,4 @@
-#Sun Aug 30 11:09:26 IST 2020
+#Sun Aug 30 11:34:18 IST 2020
 base.0=/Users/shishirmathur/Desktop/Flutter Work/ASSIGNMENTS/poc_stack_finance/build/app/intermediates/transforms/r8/release/0/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

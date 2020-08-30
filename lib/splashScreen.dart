@@ -25,8 +25,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         vsync: this,
       )..forward();
       _animation = Tween<Offset>(
-        begin: const Offset(0.0, 0.75),
-        end: const Offset(1, 0.75),
+        begin: const Offset(0.0, 0.8),
+        end: const Offset(1, 0.8),
       ).animate(CurvedAnimation(
         parent: _controller,
         curve: Curves.easeInCubic,
