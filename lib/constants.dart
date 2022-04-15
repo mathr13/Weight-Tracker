@@ -13,6 +13,8 @@ const double GENERICBORDERRADIUS = 15.0;
 const int SPLASHANIMATIONDURATION = 2;
 //----------------------------------------------------------------------------------
 
+//-----------------------------NEW CHANGE-------------------------------------------
+
 //------------------------------------  LABELS -------------------------------------
 const String USERNAME = "Username";
 const String PASSWORD = "Password";
