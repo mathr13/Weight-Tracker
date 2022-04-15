@@ -6,6 +6,7 @@ class Weight {
   String uniqueId;
   double change;
   String metric;
+  int aplha;
 
   Weight({this.timestamp, this.uniqueId, this.value, this.change, this.metric});
 
